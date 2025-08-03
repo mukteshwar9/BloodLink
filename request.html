@@ -1,0 +1,199 @@
+<!-- BLOOD REQUEST FORM SECTION -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Blood Requests Section */
+.blood-request-container {
+  max-width: 700px;  /* limit form width */
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Each row is flex with label and input side by side */
+.form-row {
+  display: flex;
+  align-items: center;
+}
+
+/* Labels take about 35% width and are bold */
+.form-label {
+  flex: 0 0 35%;
+  font-weight: 700;  /* bold */
+  font-size: 1.1rem;
+  color: #333;
+  padding-right: 15px;
+}
+
+/* Inputs take remaining 65% width */
+.form-row input,
+.form-row select,
+.form-row textarea {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color: #dc3545; /* BloodLink brand red */
+}
+
+/* Textarea special styling */
+.form-row textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Button row: align button to right */
+.button-row {
+  justify-content: flex-end;
+}
+
+/* Submit button style */
+.btn-primary {
+  background-color: #dc3545;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.btn-primary:hover {
+  background-color: #b02a37;
+}
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place relative to the viewport */
+  right: 20px; /* Distance from the right edge of the screen */
+  bottom: 20px; /* Distance from the bottom edge of the screen */
+  /* Remove top and transform properties as they are no longer needed for this positioning */
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's on top */
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Responsive - stack vertically on small screens */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-label {
+    flex: none;
+    padding-bottom: 6px;
+  }
+}
+</style>
+ </head>
+ <body>
+  <section id="blood-request" class="blood-request">
+  <div class="container blood-request-container">
+
+    <h2 class="section-title">Request Blood</h2>
+    <p class="section-subtitle">Fill out the form below to request blood for urgent medical needs.</p>
+
+    <form id="bloodRequestForm" action="#" method="POST" class="request-form">
+
+      <div class="form-row">
+        <label for="hospitalName" class="form-label">Hospital Name</label>
+        <input type="text" id="hospitalName" name="hospitalName" placeholder="Enter hospital name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="contactPerson" class="form-label">Contact Person</label>
+        <input type="text" id="contactPerson" name="contactPerson" placeholder="Enter contact person name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="contactNumber" class="form-label">Contact Number</label>
+        <input type="tel" id="contactNumber" name="contactNumber" placeholder="+91 12345 67890" required pattern="[+0-9\s\-]{10,15}">
+      </div>
+
+      <div class="form-row">
+        <label for="bloodType" class="form-label">Blood Type Required</label>
+        <select id="bloodType" name="bloodType" required>
+          <option value="" disabled selected>Select blood type</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="unitsRequired" class="form-label">Units Required</label>
+        <input type="number" id="unitsRequired" name="unitsRequired" min="1" max="50" placeholder="Enter number of units" required>
+      </div>
+
+      <div class="form-row">
+        <label for="hospitalAddress" class="form-label">Hospital Address</label>
+        <textarea id="hospitalAddress" name="hospitalAddress" rows="3" placeholder="Enter hospital address" required></textarea>
+      </div>
+
+      <div class="form-row button-row">
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+ <div class="popup" id="popupMessage"></div>
+<script>
+    // JavaScript for Back Button
+    function showPopupMessage(message) {
+      const popup = document.getElementById("popupMessage");
+      popup.textContent = message;
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 3000);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          showPopupMessage("request form submitted successfully.");
+          form.reset();
+        });
+      }
+    });
+
+    const backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+      history.back(); // Navigate to the previous page
+    });
+  </script>
+  
+ </body>
+ </html>

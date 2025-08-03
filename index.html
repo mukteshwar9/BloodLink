@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink - Saving Lives</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">BloodLink</a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#upcoming-camps">Camps</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="2.html" class="btn btn-donate">Register</a>
+                <a href="4.html" class="btn btn-request">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content-wrapper">
+            <div class="hero-main-content">
+                <h1>BloodLink, <br><span>Connecting Donors</span><br><span>Saving Lives</span></h1>
+                <p>Your single donation can make a life-changing difference. Join the BloodLink community and contribute to a healthier Telangana. We connect those in need with willing donors, making critical blood accessible across the state.</p>
+                <div class="hero-cta-buttons">
+                    <a href="request.html" class="btn btn-primary">Request blood</a>
+                    <a href="8.html" class="btn btn-secondary">Donate Blood</a>
+                </div>
+            </div>
+
+            <div class="hero-donor-search-panel">
+                <div class="search-form-container">
+                    <h2>Find Blood Donors Instantly</h2>
+                    <form class="donor-search-form">
+                        <div class="form-group">
+                            <label for="blood-group-hero">Blood Group:</label>
+                            <select id="blood-group-hero" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location-hero">Location (e.g., City, Locality):</label>
+                            <input type="text" id="location-hero" placeholder="Hyderabad, Secunderabad, etc." required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search Donors</button>
+                    </form>
+                </div>
+
+                <div class="donor-results-container">
+                    <h4>Available Donors <span id="results-location-hero"></span></h4>
+                    <div class="donor-cards-grid" id="donor-results-hero">
+                        </div>
+                    <p class="no-results" id="no-donor-results-hero" style="display: none;">No donors found matching your criteria. Please try a different search or <a href="request.html">send a general blood request</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats-section" class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Our Impact in Telangana</h2>
+            <p class="section-subtitle">See how BloodLink is making a difference.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p>Donors Registered</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Lives Saved</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Camps Organized</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About BloodLink</h2>
+            <p class="section-subtitle">Connecting donors with those in need, efficiently and reliably.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission: Bridging the Gap</h3>
+                    <p>BloodLink is a non-profit initiative dedicated to creating a seamless ecosystem for blood donation and access. In Telangana, every minute counts when it comes to medical emergencies, and a ready supply of safe blood is paramount. We aim to reduce the time lag in finding suitable donors and making blood available at critical junctures.</p>
+                    <p>We work tirelessly to organize blood donation drives, maintain a robust database of willing donors, and collaborate with hospitals and blood banks to ensure a consistent and reliable supply. Our platform is built on transparency, trust, and the unwavering belief that no one should suffer due to blood scarcity.</p>
+                    <a href="#" class="btn btn-learn-more">Donate Blood Now! <i class='bx bx-right-arrow-alt'></i></a>
+                </div>
+                <div class="about-image">
+                    <img src="about-donation-donate-blood-mb.jpg" alt="About BloodLink">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upcoming-camps" class="upcoming-camps">
+        <div class="container">
+            <h2 class="section-title">Upcoming Blood Donation Camps</h2>
+            <p class="section-subtitle">Find and register for blood donation drives near you.</p>
+
+            <div class="camp-filter-form">
+                <label for="camp-location">Filter by Location:</label>
+                <input type="text" id="camp-location" placeholder="Enter locality or city">
+                <button type="button" class="btn btn-secondary" onclick="filterCamps()">Apply Filter</button>
+            </div>
+
+            <div class="camp-list-grid" id="camp-list">
+                </div>
+            <p class="no-results" id="no-camp-results" style="display: none;">No upcoming camps found for this location. Check back soon!</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Reach out for any queries or assistance.</p>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><i class='bx bx-map'></i> <a href="https://maps.google.com/?q=BloodLink+HQ,+Hyderabad,+Telangana,+India" target="_blank" rel="noopener noreferrer">BloodLink HQ, Hyderabad, Telangana, India</a></p>
+                    <p><i class='bx bx-phone'></i><a href="tel:+917995030170">+91 79950 30170</a></p>
+                    <p><i class='bx bx-envelope'></i><a href="mailto:karthikreddy6900@gmail.com"> info@bloodlink.org</a></p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="text" placeholder="Subject" required>
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 BloodLink Blood Bank. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="popup" id="popupMessage"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dummy data for demonstration
+            const allDonors = [
+                // Added contactNumber for each donor
+                { name: "Karthik Reddy", bloodGroup: "A+", lastDonated: "2 months ago", location: "Kandlakoya, Hyderabad", contactNumber: "917995030170" },
+                { name: "Akhil", bloodGroup: "O-", lastDonated: "4 months ago", location: "Suchitra, Hyderabad", contactNumber: "919398708337" },
+                { name: "Vijender", bloodGroup: "B+", lastDonated: "1 month ago", location: "Kompally, Hyderabad", contactNumber: "917993531738" },
+                { name: "Hari Krishna", bloodGroup: "AB+", lastDonated: "3 months ago", location: "Secunderabad, Hyderabad", contactNumber: "919866521079" },
+                { name: "Sita Devi", bloodGroup: "A-", lastDonated: "6 months ago", location: "Uppal, Hyderabad", contactNumber: "919182396657" },
+                { name: "Anil Kumar", bloodGroup: "O+", lastDonated: "2 weeks ago", location: "Banjara Hills, Hyderabad", contactNumber: "919951383211" },
+            ];
+
+            const allCamps = [
+                { name: "Community Blood Drive - Jubilee Hills", date: "July 20, 2025", time: "10:00 AM - 4:00 PM", venue: "Community Hall, Road No. 45, Jubilee Hills", organizer: "Rotary Club of Hyderabad" },
+                { name: "Save A Life Camp - Secunderabad", date: "August 5, 2025", time: "9:00 AM - 3:00 PM", venue: "Parade Ground, Secunderabad", organizer: "Indian Red Cross Society" },
+                { name: "NTR Trust Blood Camp - Banjara Hills", date: "August 15, 2025", time: "11:00 AM - 5:00 PM", venue: "NTR Bhavan, Road No.2, Banjara Hills", organizer: "NTR Memorial Trust" },
+                { name: "Youth for Blood - Kothaguda", date: "September 1, 2025", time: "10:00 AM - 2:00 PM", venue: "Cyber Towers, Hitec City, Kothaguda", organizer: "Local Youth Volunteers" },
+                { name: "Health & Life Camp - Ameerpet", date: "September 10, 2025", time: "9:30 AM - 3:30 PM", venue: "Sarathi Studios Road, Ameerpet", organizer: "Deccan's Blood Centre" }
+            ];
+
+            // Function to show popup message
+            function showPopupMessage(message) {
+                const popup = document.getElementById("popupMessage");
+                popup.textContent = message;
+                popup.style.display = "block";
+                setTimeout(() => {
+                    popup.style.display = "none";
+                }, 3000); // Popup disappears after 3 seconds
+            }
+
+            // Donor Search (within Hero)
+            const donorSearchFormHero = document.querySelector('.hero-donor-search-panel .donor-search-form');
+            const donorResultsContainerHero = document.getElementById('donor-results-hero');
+            const noDonorResultsHero = document.getElementById('no-donor-results-hero');
+            const resultsLocationSpanHero = document.getElementById('results-location-hero');
+
+            donorSearchFormHero.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const bloodGroup = document.getElementById('blood-group-hero').value;
+                const location = document.getElementById('location-hero').value.toLowerCase().trim(); // Trim whitespace
+
+                let filteredDonors = allDonors.filter(donor => {
+                    const matchesBloodGroup = bloodGroup === "" || donor.bloodGroup === bloodGroup;
+                    const matchesLocation = location === "" || donor.location.toLowerCase().includes(location); // Allow empty location to show all
+                    return matchesBloodGroup && matchesLocation;
+                });
+
+                displayDonorsHero(filteredDonors, location);
+            });
+
+            function displayDonorsHero(donors, searchLocation) {
+                donorResultsContainerHero.innerHTML = ''; // Clear previous results
+                // Only display location in heading if a search location was provided
+                // Improved display: If searchLocation is "hyderabad, secunderabad", it will show "in Hyderabad"
+                resultsLocationSpanHero.textContent = searchLocation ? `in ${searchLocation.split(',')[0].charAt(0).toUpperCase() + searchLocation.split(',')[0].slice(1)}` : '';
+
+                if (donors.length === 0) {
+                    noDonorResultsHero.style.display = 'block';
+                } else {
+                    noDonorResultsHero.style.display = 'none';
+                    donors.forEach(donor => {
+                        // Construct the WhatsApp link
+                        const whatsappLink = `https://wa.me/${donor.contactNumber}?text=Hi%20${encodeURIComponent(donor.name)}%2C%20I%20saw%20your%20profile%20on%20BloodLink%20and%20need%20blood%20donation.`;
+                        const callLink = `tel:${donor.contactNumber}`;
+
+                        const donorCard = `
+                            <div class="donor-card">
+                                <h4>${donor.name} (${donor.bloodGroup})</h4>
+                                <p>Last Donated: ${donor.lastDonated}</p>
+                                <p>Location: ${donor.location}</p>
+                                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small" style="flex-grow: 1; text-align: center;"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+                                    <a href="${callLink}" class="btn btn-primary btn-small" style="flex-grow: 1; text-align: center;"><i class='bx bx-phone'></i> Call</a>
+                                </div>
+                            </div>
+                        `;
+                        donorResultsContainerHero.innerHTML += donorCard;
+                    });
+                }
+            }
+
+            // Initial display of all donors in the hero section
+            displayDonorsHero(allDonors, ''); // Show all donors by default
+
+            // Camp Filter
+            const campFilterInput = document.getElementById('camp-location');
+            const campListContainer = document.getElementById('camp-list');
+            const noCampResults = document.getElementById('no-camp-results');
+
+            // Make filterCamps accessible globally or attach to button directly
+            window.filterCamps = function() { // Added window. to make it globally accessible for onclick
+                const filterLocation = campFilterInput.value.toLowerCase().trim();
+
+                let filteredCamps = allCamps.filter(camp => {
+                    // Corrected line: Check if the venue includes the filter location, or if the filter is empty
+                    return filterLocation === "" || camp.venue.toLowerCase().includes(filterLocation);
+                });
+
+                displayCamps(filteredCamps);
+            }
+
+            function displayCamps(camps) {
+                campListContainer.innerHTML = '';
+                if (camps.length === 0) {
+                    noCampResults.style.display = 'block';
+                } else {
+                    noCampResults.style.display = 'none';
+                    camps.forEach(camp => {
+                        const campCard = `
+                            <div class="camp-card">
+                                <h4>${camp.name}</h4>
+                                <p><i class='bx bx-calendar'></i> Date: ${camp.date}</p>
+                                <p><i class='bx bx-time'></i> Time: ${camp.time}</p>
+                                <p><i class='bx bx-map-pin'></i> Venue: ${camp.venue}</p>
+                                <p class="camp-organizer">Organized by: ${camp.organizer}</p>
+                                <a href="2.html" class="btn btn-primary btn-small">Register for Camp</a>
+                            </div>
+                        `;
+                        campListContainer.innerHTML += campCard;
+                    });
+                }
+            }
+
+            // Initial display of all camps
+            displayCamps(allCamps);
+
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                showPopupMessage("Your message has been sent successfully!");
+                contactForm.reset(); // Clear the form fields
+            });
+        });
+    </script>
+</body>
+</html>

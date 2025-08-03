@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donation Form</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    .container button a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .back-button {
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      color: black;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .back-button:hover {
+      color: #ff4d4d;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #ff4d4d;
+      margin: 0;
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 80%; /* Reduced width */
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .radio-group label {
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e63939;
+    }
+
+    /* CSS for the popup message */
+    /* CSS for the popup message */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place relative to the viewport */
+  right: 20px; /* Distance from the right edge of the screen */
+  bottom: 20px; /* Distance from the bottom edge of the screen */
+  /* Remove top and transform properties as they are no longer needed for this positioning */
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's on top */
+  font-size: 16px;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="back-button" id="backButton">←</button>
+      <h1>Blood Donation</h1>
+    </header>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      
+      <label>Is this your first time donating?</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="first-time" value="yes" required> Yes
+        </label>
+        <label>
+          <input type="radio" name="first-time" value="no" required> No
+        </label>
+      </div>
+      
+      <label for="blood-type">Blood type</label>
+      <input type="text" id="blood-type" placeholder="Enter your blood type" required>
+      
+      <label for="address">Address</label>
+      <input type="text" id="address" placeholder="Enter your address" required>
+      
+      <label for="health-issues">Any Health Issues?</label>
+      <input type="text" id="health-issues" placeholder="Please Provide" required>
+      
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" placeholder="Enter your phone number" required>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+  <div class="popup" id="popupMessage"></div>
+
+  <script>
+    // JavaScript for Back Button
+    function showPopupMessage(message) {
+      const popup = document.getElementById("popupMessage");
+      popup.textContent = message;
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 3000);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          showPopupMessage("Donation form submitted successfully.");
+          form.reset();
+        });
+      }
+    });
+
+    const backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+      history.back(); // Navigate to the previous page
+    });
+  </script>
+</body>
+</html>

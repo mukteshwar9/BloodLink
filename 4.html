@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            width: 90%; /* Reduced width */
+            max-width: 320px; /* Ensures it's narrower */
+            height: auto; /* Adapts to content but increases height overall */
+            background-color: white;
+            padding: 30px 20px; /* Extra padding for height */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .login-container p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e8e8e8;
+            font-size: 14px;
+        }
+        .login-container a {
+            display: block;
+            font-size: 14px;
+            color: #f44336;
+            text-decoration: none;
+            margin: 5px 0 20px;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .login-button {
+            display: block; /* Ensures button-like behavior */
+            width: 100%;
+            padding: 12px;
+            background-color: #f44336;
+            color: white !important; /* Explicitly sets text color to white */
+            text-align: center; /* Centers the text */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none; /* Removes underline */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-button:hover {
+            background-color: #d32f2f;
+        }
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ccc;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login Here</h1>
+        <p>Kindly Login with your Credentials</p>
+        <input type="text" placeholder="Enter User ID" aria-label="User ID" required />
+        <input type="password" placeholder="Enter Password" aria-label="Password" required />
+        <a href="#">Forgot Password</a>
+        <a href="5.html" class="login-button">LOGIN</a>
+        <a href="javascript:history.back()" class="back-button">Back</a> <!-- Added Back Button -->
+    </div>
+</body>
+</html>
